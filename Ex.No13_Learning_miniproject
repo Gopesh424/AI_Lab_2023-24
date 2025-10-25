@@ -1,14 +1,58 @@
 # Ex.No: 10 Learning – Use Supervised Learning  
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE: 25-10-2025                                                                           
+### REGISTER NUMBER : 212223060070
 ### AIM: 
-To write a program to train the classifier for -----------------.
-###  Algorithm:
+To write a program to train the classifier for Iris Flower classification.
+### Algorithm:
+Decision Tree Classifier (Supervised Learning)
+
+Step 1: Load the dataset.
+
+Step 2: Split the data into training and testing sets.
+
+Step 3: Train the Decision Tree classifier on the training set.
+
+Step 4: Test the classifier on the testing set.
+
+Step 5: Evaluate accuracy and make predictions.
 
 ### Program:
+# Import required libraries
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+# Load Iris dataset
+iris = load_iris()
+X = iris.data   # Features: sepal length, sepal width, petal length, petal width
+y = iris.target # Labels: 0 = setosa, 1 = versicolor, 2 = virginica
+
+# Split dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize Decision Tree Classifier
+clf = DecisionTreeClassifier()
+
+# Train the classifier
+clf.fit(X_train, y_train)
+
+# Predict on test data
+y_pred = clf.predict(X_test)
+
+# Evaluate accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+# Predicting a new sample
+sample = [[5.1, 3.5, 1.4, 0.2]]  # Example: Features of a flower
+prediction = iris.target_names[clf.predict(sample)[0]]
+print("Predicted class for sample:", prediction)
 
 
 ### Output:
+Accuracy: 1.0
+Predicted class for sample: setosa
 
 
 ### Result:
